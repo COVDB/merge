@@ -17,10 +17,14 @@ def main():
             df1 = pd.read_excel(file1)
             df2 = pd.read_excel(file2)
             df3 = pd.read_excel(file3)
-            
+
+            # Select relevant columns from AM LOG
+            am_log_columns = ["Delivery Date", "Customer Reference", "Material Number", "Serial number", "Year of construction", "Month of construction"]
+            df1 = df1[am_log_columns]
+
             # Merge the data
             merged_df = merge_data(df1, df2, df3)
-            
+
             st.write("Merged Data:")
             st.dataframe(merged_df)
         else:
